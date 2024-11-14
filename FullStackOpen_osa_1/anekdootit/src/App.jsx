@@ -21,12 +21,15 @@ const App = () => {
     setSelected(randomIndex)
   }
 
-
   const voteAnecdote = () => {
     const newAnecdotesData = [...anecdotesData]
     newAnecdotesData[selected].votes += 1
     setAnecdotesData(newAnecdotesData)
   }
+
+  const maxVotes = anecdotesData.reduce((max, anecdote) => {
+    return anecdote.votes > max.votes ? anecdote : max
+  }, anecdotesData[0])
 
   const Button = ({text, onClick}) => {
     return <button onClick={onClick}>{text}</button>
@@ -34,11 +37,14 @@ const App = () => {
 
   return (
     <div>
-      <h1>anecdotes</h1>
+      <h1>Anecdote of the day</h1>
       <p>{anecdotesData[selected].anecdote}</p>
       <p>has {anecdotesData[selected].votes} votes</p>
       <Button text="vote" onClick={voteAnecdote} />
-      <Button text="next anecdote" onClick={randomAnecdote} />
+      <Button text="next ancedote" onClick={randomAnecdote} />
+      <h1>Anecdote with the most votes</h1>
+      <p>{maxVotes.anecdote}</p>
+      <h4>this anecdote has {maxVotes.votes} votes</h4>
     </div>
   )
 }
