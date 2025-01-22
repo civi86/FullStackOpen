@@ -2,10 +2,9 @@ const baseUrl = 'http://localhost:3001/persons';
 
 export const getAllPersons = async () => {
   const response = await fetch(baseUrl);
-  if (!response.ok) {
-    throw new Error('Network response was not ok');
-  }
-  return response.json();
+  const data = await response.json();
+  console.log(data);
+  return data;
 };
 
 export const addPerson = async (newPerson) => {
@@ -16,9 +15,11 @@ export const addPerson = async (newPerson) => {
     },
     body: JSON.stringify(newPerson),
   });
-
-  if (!response.ok) {
-    throw new Error('Failed to add person');
-  }
   return response.json();
+};
+
+export const deletePerson = async (id) => {
+  await fetch(`${baseUrl}/${id}`, {
+    method: 'DELETE',
+  });
 };

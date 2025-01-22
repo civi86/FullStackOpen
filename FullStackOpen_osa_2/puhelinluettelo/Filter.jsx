@@ -1,4 +1,4 @@
-const Filter = ({ searchQuery, handleSearchChange }) => {
+export const Filter = ({ searchQuery, handleSearchChange }) => {
     return (
       <div>
         filter shown with: 
@@ -9,5 +9,3 @@ const Filter = ({ searchQuery, handleSearchChange }) => {
       </div>
     );
   };
-  
-  export default Filter;

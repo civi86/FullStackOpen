@@ -1,13 +1,14 @@
-const PersonsList = ({ persons }) => {
-    return (
-      <ul>
-        {persons.map((person) => (
-          <li key={person.id}>
-            {person.name} {person.number}
-          </li>
-        ))}
-      </ul>
-    );
-  };
-  
-  export default PersonsList;
+export const PersonsList = ({ persons, onDelete }) => {
+  return (
+    <ul>
+      {persons.map((person) => (
+        <li key={person.id} className="note">
+          {person.name} {person.number}{" "}
+          <button onClick={() => onDelete(person.id)} id={`delete-${person.id}`}>
+            delete
+          </button>
+        </li>
+      ))}
+    </ul>
+  );
+};
