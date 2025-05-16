@@ -3,7 +3,6 @@ const baseUrl = 'https://puhelinluettelo-backend-3pv8.onrender.com/api/persons';
 export const getAllPersons = async () => {
   const response = await fetch(baseUrl);
   const data = await response.json();
-  console.log(data);
   return data;
 };
 

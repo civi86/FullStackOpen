@@ -36,6 +36,10 @@ export const App = () => {
       alert('Fields cannot be empty!');
       return;
     }
+    if (newName.length <= 3) {
+      alert('Name too short! Minimum letters: 3');
+      return;
+    }
 
     if (persons.some(person => person.name === newName)) {
       alert(`${newName} is already added to the phonebook!`);
@@ -57,12 +61,12 @@ export const App = () => {
         console.error(error);
       });
   };
-  const handleDelete = (id) => {
-    const person = persons.find(p => p.id === id);
+  const handleDelete = (_id) => {
+    const person = persons.find(p => p._id === _id);
     if (window.confirm(`Delete ${person.name}?`)) {
-      deletePerson(id)
+      deletePerson(_id)
         .then(() => {
-          setPersons(prevPersons => prevPersons.filter(person => person.id !== id));
+          setPersons(prevPersons => prevPersons.filter(person => person._id !== _id));
         })
         .catch(error => {
           setErrorMessage('Failed to delete person.');

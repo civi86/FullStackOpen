@@ -2,9 +2,9 @@ export const PersonsList = ({ persons, onDelete }) => {
   return (
     <ul>
       {persons.map((person) => (
-        <li key={person.id} className="note">
+        <li key={person._id} className="note">
           {person.name} {person.number}{" "}
-          <button onClick={() => onDelete(person.id)} id={`delete-${person.id}`}>
+          <button onClick={() => onDelete(person._id)} id={`delete-${person._id}`}>
             delete
           </button>
         </li>
