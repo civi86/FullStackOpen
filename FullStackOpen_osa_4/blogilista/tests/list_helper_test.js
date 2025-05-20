@@ -77,7 +77,6 @@ describe('total likes', () => {
 
   test('of a bigger list is calculated right', () => {
     const result = listHelper.totalLikes(fullList)
-    // 7 + 5 + 12 + 10 + 0 + 2 = 36
     assert.strictEqual(result, 36)
   })
 })
